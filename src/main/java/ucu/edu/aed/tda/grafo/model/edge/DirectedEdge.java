@@ -40,7 +40,6 @@ public class DirectedEdge<V, D> implements Edge<V, D> {
     public int hashCode() {
         int h1 = Objects.hashCode(source);
         int h2 = Objects.hashCode(target);
-        // Mezcla orden-sensible + marca de dirigido
         return 31 * (31 + h1) + h2; // simple y efectivo
     }
 

@@ -9,3 +9,5 @@ public interface Edge<V, D> {
 
     boolean directed();
 }
+
+//que se espera que haga?
