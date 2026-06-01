@@ -1,4 +1,4 @@
-package ucu.edu.aed.tda.grafo;
+package ucu.edu.aed.tda.grafo.dirigido;
 
 
 import ucu.edu.aed.tda.grafo.model.IGraph;
