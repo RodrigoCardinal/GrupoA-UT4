@@ -8,9 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.*;
 import java.util.function.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
 {
+    @Override
     public <V, D extends WeightedEdge> IDijkstraResult<V> dijkstra(Comparable<V> source, IDirectedIGraph<V, D> grafo) 
     {
 
@@ -69,57 +72,62 @@ public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
             }
         }
 
-        return new DijkstraResult<>(dist, prev);
+        return new DijkstraResult<>(origin, dist, prev);
     }
 
-
-
+    
+    @Override
     public <V, D extends WeightedEdge> IFloydWarshallResult<V> floyd(IDirectedIGraph<V, D> grafo) {
 
-        List<V> vs = new ArrayList<>(grafo.vertices());
-        int n = vs.size();
+    List<V> vertices = new ArrayList<>(grafo.vertices());
+    Map<V, Map<V, Double>> dist = new HashMap<>();
+    Map<V, Map<V, V>> next = new HashMap<>();
 
-        double[][] A = new double[n][n];
-        int[][] next = new int[n][n];
+    for (V v : vertices) {
+        dist.put(v, new HashMap<>());
+        next.put(v, new HashMap<>());
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == j) {
-                    A[i][j] = 0;
-                    next[i][j] = i;
+        for (V u : vertices) {
+
+            if (v.equals(u)) {
+                dist.get(v).put(u, 0.0);
+                next.get(v).put(u, v);
+            } else {
+
+                Edge<V, D> edge = grafo.obtenerArista(
+                        grafo.construirComparable(v),
+                        grafo.construirComparable(u));
+
+                if (edge != null) {
+                    dist.get(v).put(u, edge.dato().getWeight());
+                    next.get(v).put(u, u);
                 } else {
-                    Edge<V, D> e = grafo.obtenerArista(
-                            grafo.construirComparable(vs.get(i)),
-                            grafo.construirComparable(vs.get(j)));
-                    if (e != null) {
-                        A[i][j] = e.dato().getWeight();
-                        next[i][j] = j;
-                    } else {
-                        A[i][j] = Double.POSITIVE_INFINITY;
-                        next[i][j] = -1;
-                    }
+                    dist.get(v).put(u, Double.POSITIVE_INFINITY);
                 }
             }
         }
-
-        for (int k = 0; k < n; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (!Double.isInfinite(A[i][k]) && !Double.isInfinite(A[k][j])
-                            && A[i][k] + A[k][j] < A[i][j]) {
-                        A[i][j] = A[i][k] + A[k][j];
-                        next[i][j] = next[i][k];
-                    }
-                }
-            }
-        }
-
-        return new FloydWarshallResult<>(vs, A, next);
     }
-    // ─────────────────────────────────────────────
-    // WARSHALL
-    // ─────────────────────────────────────────────
 
+    for (V k : vertices) {
+        for (V i : vertices) {
+            for (V j : vertices) {
+
+                if (!Double.isInfinite(dist.get(i).get(k))
+                        && !Double.isInfinite(dist.get(k).get(j))
+                        && dist.get(i).get(k) + dist.get(k).get(j) < dist.get(i).get(j)) {
+
+                    dist.get(i).put(j,
+                            dist.get(i).get(k) + dist.get(k).get(j));
+
+                    next.get(i).put(j, next.get(i).get(k));
+                }
+            }
+        }
+    }
+
+    return new FloydWarshallResult<>(dist, next);
+}
+    // WARSHALL
     /*
      * Warshall: versión simplificada que solo calcula CONECTIVIDAD (no costos).
      * dist[i][j] = 0.0 si hay camino, infinito si no hay.
@@ -163,9 +171,7 @@ public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
         return new FloydWarshallResult<>(dist, next);
     }
 
-    // ─────────────────────────────────────────────
-    // CENTRO DEL GRAFO Y EXCENTRICIDAD
-    // ─────────────────────────────────────────────
+    //CENTRO DEL GRAFO Y EXCENTRICIDAD
 
     /*
      * Excentricidad de un vértice: la mayor distancia mínima hacia cualquier otro vértice.
@@ -203,10 +209,7 @@ public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
         return centro;
     }
 
-    // ─────────────────────────────────────────────
     // DFS - Recorrido en Profundidad
-    // ─────────────────────────────────────────────
-
     /*
      * DFS: explora tan lejos como sea posible antes de retroceder.
      * Usa recursión — cada vez que visita un vértice, llama al consumer
@@ -229,10 +232,7 @@ public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
         }
     }
 
-    // ─────────────────────────────────────────────
     // BFS - Recorrido en Amplitud
-    // ─────────────────────────────────────────────
-
     /*
      * BFS: explora nivel por nivel — primero todos los vecinos directos,
      * luego los vecinos de los vecinos, etc.
@@ -260,35 +260,31 @@ public class DirectedGraphAlgorithms implements IDirectedGraphAlgorithms
             }
         }
     }
-    /*
-    // ─────────────────────────────────────────────
-    // TODOS LOS CAMINOS
-    // ─────────────────────────────────────────────
-
-    /*
-     * Encuentra todos los caminos posibles entre source y target usando backtracking.
-     *
-     * Idea: DFS explorando todos los caminos, sin marcar nodos como
-     * permanentemente visitados — solo los marcamos durante la exploración
-     * actual y los desmarcamos al retroceder (backtrack).
-     */
+    
     @Override
-    public <V, D extends WeightedEdge> List<Path<V>> obtenerTodosLosCaminos(Comparable<V> source, Comparable<V> target, IGraph<V, D> grafo) {
+    public <V, D extends WeightedEdge> List<Path<V>> obtenerTodosLosCaminos(
+            Comparable<V> source, Comparable<V> target, IGraph<V, D> grafo) {
+
         List<Path<V>> resultado = new ArrayList<>();
         V sourceVertex = grafo.buscarVertice(source);
         V targetVertex = grafo.buscarVertice(target);
         if (sourceVertex == null || targetVertex == null) return resultado;
 
+        Set<V> visitados = new HashSet<>();
+        visitados.add(sourceVertex);
+
         LinkedList<V> caminoActual = new LinkedList<>();
         caminoActual.add(sourceVertex);
 
-        dfsAllPaths(grafo, sourceVertex, targetVertex, new HashSet<>(Set.of(sourceVertex)), caminoActual, 0.0, resultado);
+        dfsAllPaths(grafo, sourceVertex, targetVertex, visitados, caminoActual, 0.0, resultado);
         return resultado;
     }
 
-    private <V, D extends WeightedEdge> void dfsAllPaths(IDirectedIGraph<V, D> grafo, V actual, V target,
-                                                        Set<V> visitados, LinkedList<V> caminoActual,
-                                                        double costoActual, List<Path<V>> resultado) {
+    private <V, D extends WeightedEdge> void dfsAllPaths(
+            IGraph<V, D> grafo, V actual, V target,
+            Set<V> visitados, LinkedList<V> caminoActual,
+            double costoActual, List<Path<V>> resultado) {
+
         if (actual.equals(target)) {
             resultado.add(new Path<>(new ArrayList<>(caminoActual), costoActual));
             return;
