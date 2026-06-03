@@ -1,11 +1,11 @@
 package ucu.edu.aed.tda.grafo.implementacion;
 
 
-import ucu.edu.aed.tda.grafo.model.result.IFloydWarshallResult;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import ucu.edu.aed.tda.grafo.model.result.IFloydWarshallResult;
 
 public final class FloydWarshallResult<V> implements IFloydWarshallResult<V> {
     public final Map<V, Map<V, Double>> dist; 
@@ -37,9 +37,14 @@ public final class FloydWarshallResult<V> implements IFloydWarshallResult<V> {
     }
 
     public boolean connected(V source, V target) {
-        Map<V, Double> row = dist.get(source);
-        if (row == null) return false;
-        Double v = row.get(target);
-        return v != 0 && !Double.isInfinite(v);
+    Map<V, Double> row = dist.get(source);
+    if (row == null) {
+        return false;
+    }
+    Double v = row.get(target);
+    if (v == null) {
+        return false;
+    }
+    return v != 0 && !Double.isInfinite(v);
     }
 }
