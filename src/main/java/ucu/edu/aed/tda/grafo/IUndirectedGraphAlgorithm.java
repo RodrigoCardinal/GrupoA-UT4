@@ -1,6 +1,5 @@
 package ucu.edu.aed.tda.grafo;
 
-
 import ucu.edu.aed.tda.grafo.model.edge.Edge;
 import ucu.edu.aed.tda.grafo.model.edge.WeightedEdge;
 
@@ -22,14 +21,11 @@ public interface IUndirectedGraphAlgorithm {
      * Ejecuta prim sin un vértice origen
      */
     default <V, D extends WeightedEdge> IUndirectedGraph<V, D> prim(IUndirectedGraph<V, D> graph) {
-
         for (V vertex : graph.vertices()) {
             return prim(graph, graph.construirComparable(vertex));
         }
-
         return null;
     }
-
 
     /**
      * Retorna la mínima arista (u,v) del grafo "graph", tal que u está en U, y v está en V.
@@ -41,4 +37,9 @@ public interface IUndirectedGraphAlgorithm {
      * Implementa el algoritmo de búsqueda en amplitud
      */
     <V, D> void bea(IUndirectedGraph<V, D> graph, Consumer<V> consumer);
+
+    /**
+     * Retorna los puntos de articulación del grafo
+     */
+    <V, D> Collection<V> puntosDeArticulacion(IUndirectedGraph<V, D> graph);
 }
