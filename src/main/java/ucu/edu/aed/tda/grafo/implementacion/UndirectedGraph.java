@@ -1,13 +1,14 @@
 package ucu.edu.aed.tda.grafo.implementacion;
 
-import ucu.edu.aed.tda.grafo.IUndirectedGraph;
-import ucu.edu.aed.tda.grafo.model.edge.Edge;
-import ucu.edu.aed.tda.grafo.model.edge.UndirectedEdge;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+
+import ucu.edu.aed.tda.grafo.IUndirectedGraph;
+import ucu.edu.aed.tda.grafo.model.edge.Edge;
+import ucu.edu.aed.tda.grafo.model.edge.UndirectedEdge;
 
 public class UndirectedGraph<V, D> implements IUndirectedGraph<V, D> {
 
@@ -30,7 +31,10 @@ public class UndirectedGraph<V, D> implements IUndirectedGraph<V, D> {
      */
     @Override
     public boolean agregarVertice(V vertex) {
-        return vertices.add(vertex);
+        if (vertex!=null){
+            return vertices.add(vertex);
+        }
+        return false;
     }
 
     @Override

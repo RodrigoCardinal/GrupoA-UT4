@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.307" tests="17" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.283" tests="17" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="UY"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\risso\AppData\Local\Temp\surefire6715076039221644830\surefirebooter-20260603204309279_3.jar C:\Users\risso\AppData\Local\Temp\surefire6715076039221644830 2026-06-03T20-43-08_826-jvmRun1 surefire-20260603204309279_1tmp surefire_0-20260603204309279_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\risso\AppData\Local\Temp\surefire6011049601671298526\surefirebooter-20260603204559542_3.jar C:\Users\risso\AppData\Local\Temp\surefire6011049601671298526 2026-06-03T20-45-58_977-jvmRun1 surefire-20260603204559542_1tmp surefire_0-20260603204559542_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest"/>
     <property name="surefire.test.class.path" value="C:\Users\risso\Desktop\Algoritmos java\GrupoA-UT4\target\test-classes;C:\Users\risso\Desktop\Algoritmos java\GrupoA-UT4\target\classes;C:\Users\risso\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\risso\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\risso\AppData\Local\Temp\surefire6715076039221644830\surefirebooter-20260603204309279_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\risso\AppData\Local\Temp\surefire6011049601671298526\surefirebooter-20260603204559542_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.10+7-LTS"/>
@@ -62,20 +62,20 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="testAdyacencias_sinSalidas" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.021"/>
-  <testcase name="testRemoverVertice_eliminaAristasRelacionadas" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
-  <testcase name="testExisteArista_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.007"/>
+  <testcase name="testRemoverVertice_eliminaAristasRelacionadas" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
+  <testcase name="testExisteArista_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
   <testcase name="testAgregarVertice_nuevo" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
   <testcase name="testAristas" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
-  <testcase name="testAgregarVertice_duplicado" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
-  <testcase name="testObtenerArista_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
-  <testcase name="testExisteArista_existe" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
-  <testcase name="testBuscarVertice_existe" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
-  <testcase name="testAdyacencias" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
+  <testcase name="testAgregarVertice_duplicado" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
+  <testcase name="testObtenerArista_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
+  <testcase name="testExisteArista_existe" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.004"/>
+  <testcase name="testBuscarVertice_existe" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.004"/>
+  <testcase name="testAdyacencias" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
   <testcase name="testAgregarArista_duplicada" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
-  <testcase name="testAgregarArista_nueva" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
-  <testcase name="testEliminarArista_existente" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.005"/>
+  <testcase name="testAgregarArista_nueva" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
+  <testcase name="testEliminarArista_existente" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.004"/>
   <testcase name="testBuscarVertice_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
-  <testcase name="testPredecessors" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.004"/>
+  <testcase name="testPredecessors" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.002"/>
   <testcase name="testVaciar" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.001"/>
   <testcase name="testEliminarArista_noExiste" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedIGraphTest" time="0.003"/>
 </testsuite>

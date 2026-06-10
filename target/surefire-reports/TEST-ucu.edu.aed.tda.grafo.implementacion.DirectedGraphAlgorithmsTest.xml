@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.232" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.299" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="UY"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\risso\AppData\Local\Temp\surefire2526510746118519076\surefirebooter-20260603204256775_3.jar C:\Users\risso\AppData\Local\Temp\surefire2526510746118519076 2026-06-03T20-42-56_303-jvmRun1 surefire-20260603204256775_1tmp surefire_0-20260603204256775_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\risso\AppData\Local\Temp\surefire6489087580260958829\surefirebooter-20260603204544635_3.jar C:\Users\risso\AppData\Local\Temp\surefire6489087580260958829 2026-06-03T20-45-44_116-jvmRun1 surefire-20260603204544635_1tmp surefire_0-20260603204544635_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest"/>
     <property name="surefire.test.class.path" value="C:\Users\risso\Desktop\Algoritmos java\GrupoA-UT4\target\test-classes;C:\Users\risso\Desktop\Algoritmos java\GrupoA-UT4\target\classes;C:\Users\risso\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\risso\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\risso\AppData\Local\Temp\surefire2526510746118519076\surefirebooter-20260603204256775_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\risso\AppData\Local\Temp\surefire6489087580260958829\surefirebooter-20260603204544635_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.10+7-LTS"/>
@@ -61,20 +61,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="clasificacionTopologicaRespetaPrecedencia" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.021"/>
+  <testcase name="clasificacionTopologicaRespetaPrecedencia" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.029"/>
   <testcase name="obtenerTodosLosCaminosConVerticeInexistenteDevuelveVacio" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.0"/>
   <testcase name="warshallDetectaConectividad" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.0"/>
   <testcase name="dijkstraDevuelveCaminoMinimo" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
-  <testcase name="centroDelGrafoEsElDeMenorExcentricidad" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
+  <testcase name="centroDelGrafoEsElDeMenorExcentricidad" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
   <testcase name="excentricidadEsLaMayorDistanciaMinimaDesdeElVertice" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
-  <testcase name="bfsConOrigenInexistenteNoInvocaConsumer" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
-  <testcase name="clasificacionTopologicaConCicloLanzaExcepcion" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
+  <testcase name="bfsConOrigenInexistenteNoInvocaConsumer" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
+  <testcase name="clasificacionTopologicaConCicloLanzaExcepcion" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
   <testcase name="floydSinCaminoDevuelveInfinito" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
-  <testcase name="dfsRecorreTodosLosVerticesAlcanzablesDesdeOrigen" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
-  <testcase name="bfsComienzaPorElOrigenYAlcanzaTodos" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
-  <testcase name="floydCalculaDistanciasMinimasEntreTodosLosPares" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
-  <testcase name="dijkstraVerticeInalcanzableDaInfinito" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
-  <testcase name="dijkstraDevuelveCostosMinimosDesdeOrigen" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
+  <testcase name="dfsRecorreTodosLosVerticesAlcanzablesDesdeOrigen" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
+  <testcase name="bfsComienzaPorElOrigenYAlcanzaTodos" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
+  <testcase name="floydCalculaDistanciasMinimasEntreTodosLosPares" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.003"/>
+  <testcase name="dijkstraVerticeInalcanzableDaInfinito" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
+  <testcase name="dijkstraDevuelveCostosMinimosDesdeOrigen" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.002"/>
   <testcase name="obtenerTodosLosCaminosEntreDosVertices" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.005"/>
   <testcase name="dfsConOrigenInexistenteNoInvocaConsumer" classname="ucu.edu.aed.tda.grafo.implementacion.DirectedGraphAlgorithmsTest" time="0.001"/>
 </testsuite>
