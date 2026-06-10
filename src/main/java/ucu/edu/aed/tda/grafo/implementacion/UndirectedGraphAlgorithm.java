@@ -1,9 +1,5 @@
 package ucu.edu.aed.tda.grafo.implementacion;
 
-import ucu.edu.aed.tda.grafo.IUndirectedGraph;
-import ucu.edu.aed.tda.grafo.IUndirectedGraphAlgorithm;
-import ucu.edu.aed.tda.grafo.model.edge.Edge;
-import ucu.edu.aed.tda.grafo.model.edge.WeightedEdge;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,8 +10,53 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class UndirectedGraphAlgorithm implements IUndirectedGraphAlgorithm {
+import ucu.edu.aed.tda.grafo.IUndirectedGraph;
+import ucu.edu.aed.tda.grafo.IUndirectedGraphAlgorithm;
+import ucu.edu.aed.tda.grafo.model.edge.Edge;
+import ucu.edu.aed.tda.grafo.model.edge.WeightedEdge;
 
+public class UndirectedGraphAlgorithm implements IUndirectedGraphAlgorithm {
+        /**
+     * Implementa el algoritmo Kruskal
+     */
+    @Override
+    public <V, D extends WeightedEdge> IUndirectedGraph<V, D> kruskal(IUndirectedGraph<V, D> graph) {
+
+        Map<V, List<V>> colecciones = new HashMap<>();
+        for (V v : graph.vertices()) {
+            List<V> col = new LinkedList<>();
+            col.add(v);
+            colecciones.put(v, col);
+        }
+
+        List<Edge<V, D>> ordenadas = new LinkedList<>(graph.aristas());
+        ordenadas.sort(Comparator.comparingDouble(e -> e.dato().getWeight()));
+
+        List<Edge<V, D>> aristasKruskal = new LinkedList<>();
+
+        for (Edge<V, D> e : ordenadas) {
+            V origen = e.source();
+            V destino = e.target();
+
+            List<V> colO = colecciones.get(origen);
+            List<V> colD = colecciones.get(destino);
+
+            if (colO != colD) {
+                colO.addAll(colD);
+                for (V x : colD) colecciones.put(x, colO);
+                aristasKruskal.add(e);
+            }
+        }
+
+        IUndirectedGraph<V, D> mst = new UndirectedGraph<>();
+        for (V v : graph.vertices()) mst.agregarVertice(v);
+        for (Edge<V, D> e : aristasKruskal) mst.agregarArista(e.source(), e.target(), e.dato());
+
+        return mst;
+    }
+    /**
+     * ejecuta el algoritmo Prim sobre el grafo
+     */
     @Override
     public <V, D extends WeightedEdge> IUndirectedGraph<V, D> prim(IUndirectedGraph<V, D> graph, Comparable<V> sourceCriteria) {
 
@@ -66,42 +107,10 @@ public class UndirectedGraphAlgorithm implements IUndirectedGraphAlgorithm {
         return mst;
     }
 
-    @Override
-    public <V, D extends WeightedEdge> IUndirectedGraph<V, D> kruskal(IUndirectedGraph<V, D> graph) {
-
-        Map<V, List<V>> colecciones = new HashMap<>();
-        for (V v : graph.vertices()) {
-            List<V> col = new LinkedList<>();
-            col.add(v);
-            colecciones.put(v, col);
-        }
-
-        List<Edge<V, D>> ordenadas = new LinkedList<>(graph.aristas());
-        ordenadas.sort(Comparator.comparingDouble(e -> e.dato().getWeight()));
-
-        List<Edge<V, D>> aristasKruskal = new LinkedList<>();
-
-        for (Edge<V, D> e : ordenadas) {
-            V origen = e.source();
-            V destino = e.target();
-
-            List<V> colO = colecciones.get(origen);
-            List<V> colD = colecciones.get(destino);
-
-            if (colO != colD) {
-                colO.addAll(colD);
-                for (V x : colD) colecciones.put(x, colO);
-                aristasKruskal.add(e);
-            }
-        }
-
-        IUndirectedGraph<V, D> mst = new UndirectedGraph<>();
-        for (V v : graph.vertices()) mst.agregarVertice(v);
-        for (Edge<V, D> e : aristasKruskal) mst.agregarArista(e.source(), e.target(), e.dato());
-
-        return mst;
-    }
-
+    /**
+     * Retorna la mínima arista (u,v) del grafo "graph", tal que u está en U, y v está en V.
+     * Este método es útil para implementar "Prim"
+     */
     @Override
     public <V, D extends WeightedEdge> Edge<V, D> searchMinEdge(IUndirectedGraph<V, D> graph, Collection<V> U, Collection<V> R) {
 
@@ -126,7 +135,9 @@ public class UndirectedGraphAlgorithm implements IUndirectedGraphAlgorithm {
         }
         return mejor;
     }
-
+    /**
+     * Implementa el algoritmo de búsqueda en amplitud
+     */
     @Override
     public <V, D> void bea(IUndirectedGraph<V, D> graph, Consumer<V> consumer) {
 
@@ -152,7 +163,9 @@ public class UndirectedGraphAlgorithm implements IUndirectedGraphAlgorithm {
             }
         }
     }
-
+    /**
+     * Retorna los puntos de articulación del grafo
+     */
     @Override
     public <V, D> Collection<V> puntosDeArticulacion(IUndirectedGraph<V, D> graph) {
 
