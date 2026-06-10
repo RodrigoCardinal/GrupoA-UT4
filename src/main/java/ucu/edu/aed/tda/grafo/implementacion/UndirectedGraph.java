@@ -147,7 +147,11 @@ public class UndirectedGraph<V, D> implements IUndirectedGraph<V, D> {
         return null;
     }
 
-
+    /**
+     * Retorna todas las aristas que el vertex tiene como adyacentes.
+     * En caso de que sea un grafo no dirigido, el método "source()"
+     * referencia al vértice "verticeCriteria"
+     */
     @Override
     public List<Edge<V, D>> adyacencias(Comparable<V> verticeCriteria) {
         List<Edge<V, D>> adyacencias = new LinkedList<>();
@@ -161,6 +165,9 @@ public class UndirectedGraph<V, D> implements IUndirectedGraph<V, D> {
         return adyacencias;
     }
 
+    /**
+     * Retorna true si el grafo es conexo
+     */
     @Override
     public boolean esConexo() {
         int size = vertices.size();
@@ -180,12 +187,18 @@ public class UndirectedGraph<V, D> implements IUndirectedGraph<V, D> {
         }
     }
 
+    /**
+     * vacía el grafo
+     */
     @Override
     public void vaciar() {
         vertices.clear();
         aristas.clear();
     }
 
+    /**
+     * retorna true si el grafo tiene ciclos
+     */
     @Override
     public boolean tieneCiclos() {
         Set<V> visitados = new HashSet<>();
